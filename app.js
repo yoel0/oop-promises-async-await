@@ -57,11 +57,20 @@ let pete = new User("Pete");
 console.log(adam.name);
 console.log(pete.name);
 
+// Make 3 new variables with that constructor function
+
 function SC2Player(name, team, banelingBust) {
   this.name = name;
   this.team = team;
   this.banelingBust = banelingBust;
+  this.intro = function () {
+    console.log("Hi, my name is " + this.name);
+  };
 }
+
+let DRG = new SC2Player("DongRaeGu", "Afreeca Freecs", true);
+console.log(DRG);
+console.log(DRG.name);
 
 let TY = new SC2Player("TY", "Afreeca Freecs", false);
 console.log(TY);
@@ -74,3 +83,56 @@ console.log(Dark.name);
 let Scarlett = new SC2Player("Scarlett", "Brave Star Gaming", true);
 console.log(Scarlett);
 console.log(Scarlett.name);
+
+DRG.intro();
+TY.intro();
+Dark.intro();
+Scarlett.intro();
+
+// Class
+class Car {
+  constructor(year, make, model, color) {
+    this.name = year;
+    this.make = make;
+    this.model = model;
+    this.color - color;
+  }
+
+  drive() {
+    console.log("vroom");
+  }
+}
+
+let tesla = new Car(2020, "Tesla", "Model Y", "Sapphire");
+
+console.log(tesla);
+//tesla.drive();
+//tesla.intro();
+
+class GithubProfile {
+  constructor(username, name, url) {
+    this.username = username;
+    this.name = name;
+    this.url = url;
+  }
+  intro() {
+    console.log(`${this.name} and my username is @${this.username}`);
+  }
+}
+
+// https://api.github.com/users/ahonore42
+
+fetch("https://api.github.com/users/ahonore42")
+  .then((response) => {
+    return response.json();
+  })
+  .then((data) => {
+    let githubURL = data.url;
+    let githubUsername = data.login;
+    let githubName = data.name;
+
+    let adam = new GithubProfile(githubUsername, githubName, githubURL);
+    console.log(adam);
+
+    adam.intro();
+  });
