@@ -122,22 +122,22 @@ class GithubProfile {
 
 // https://api.github.com/users/ahonore42
 
-fetch("https://api.github.com/users/ahonore42")
-  .then((response) => {
-    return response.json();
-  })
-  .then((data) => {
-    let githubURL = data.url;
-    let githubUsername = data.login;
-    let githubName = data.name;
+//fetch("https://api.github.com/users/ahonore42")
+//  .then((response) => {
+//   return response.json();
+//  })
+//  .then((data) => {
+//    let githubURL = data.url;
+//    let githubUsername = data.login;
+//    let githubName = data.name;
 
-    let adam = new GithubProfile(githubUsername, githubName, githubURL);
-    console.log(adam);
+//   let adam = new GithubProfile(githubUsername, githubName, githubURL);
+//    console.log(adam);
 
-    adam.intro();
-  });
+//    adam.intro();
+//  });
 
-let isMomHappy = false;
+//let isMomHappy = false;
 
 // Promise
 // let willIGetNewPhone = new Promise(
@@ -156,19 +156,35 @@ let isMomHappy = false;
 //     }
 // );
 
-let willIGetNewPhone = new Promise((resolve, reject) => {
-  if (isMomHappy) {
-    const phone = {
-      brand: "iPhone",
-      color: "red",
-    };
-    resolve(phone);
-  } else {
-    reject("No phone");
-  }
-});
+//let willIGetNewPhone = new Promise((resolve, reject) => {
+// if (isMomHappy) {
+//    const phone = {
+//     brand: "iPhone",
+//     color: "red",
+//   };
+//   resolve(phone);
+//  } else {
+//    reject("No phone");
+// }
+//});
 
 // console.log(willIGetNewPhone);
-willIGetNewPhone.then((result) => {
-  console.log(result);
-});
+//willIGetNewPhone.then((result) => {
+//  console.log(result);
+//});
+
+async function printUsers() {
+  const endpoint = "https://api.github.com/users/ahonore42";
+  let adam = await fetch(endpoint).then((response) => response.json());
+  console.log(adam);
+}
+printUsers();
+
+async function printFacebook() {
+  let facebookEndpoint = "https://api.giyhub.com/users/facebook";
+  let faceBook = await fetch(facebookEndpoint).then((response) =>
+    response.json()
+  );
+  console.log(facebook);
+}
+printFacebook();
